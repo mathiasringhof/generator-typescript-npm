@@ -1,13 +1,13 @@
 {
   "name": "generator-typescript-npm",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "Yeoman generator for TypeScript modules, using only npm scripts instead of Grunt/Gulp",
   "keywords": [
     "yeoman-generator",
     "typescript"
   ],
   "files": [
-    "generators/app"
+    "generators"
   ],
   "scripts": {
     "prebuild": "npm run clean && npm run updatetemplate && npm run copytemplate",
@@ -15,14 +15,15 @@
     "prebuild:watch": "npm run prebuild",
     "build:watch": "tsc -w",
     "clean": "rimraf generators",
-    "copytemplate": "shx mkdir -p ./generators && shx cp -R src/templates generators",
-    "updatetemplate": "shx rm -rf src/templates && mkdir src/templates && git clone https://github.com/mathiasringhof/typescript-node-seed src/templates && shx rm -rf src/templates/.git && shx rm src/templates/README.md",
+    "copytemplate": "shx mkdir -p ./generators && shx cp -R src/templates generators",    
     "lint": "tslint src/**/*.ts",
     "node": "ts-node",
+    "prepublish": "npm run build",
     "test": "mocha --require ts-node/register src/test/**/*.ts",
-    "test:watch": "nodemon -e ts,json node_modules/mocha/bin/mocha --require ts-node/register src/test/**/*.ts"    
+    "test:watch": "nodemon -e ts,json node_modules/mocha/bin/mocha --require ts-node/register src/test/**/*.ts",    
+    "updatetemplate": "shx rm -rf src/templates && mkdir src/templates && git clone https://github.com/mathiasringhof/typescript-node-seed src/templates && shx rm -rf src/templates/.git && shx rm src/templates/README.md"
   },
-  "author": "",
+  "author": "Mathias Ringhof",
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",
