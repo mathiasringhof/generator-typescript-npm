@@ -1,6 +1,6 @@
 {
   "name": "generator-typescript-npm",
-  "version": "1.3.2",
+  "version": "1.5.0",
   "description": "Yeoman generator for TypeScript modules, using only npm scripts instead of Grunt/Gulp",
   "keywords": [
     "yeoman-generator",
