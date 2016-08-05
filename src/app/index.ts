@@ -12,5 +12,13 @@ module.exports = generators.Base.extend({
       this.templatePath("**/*"),
       this.destinationPath(".")
     );
+    this.fs.move(
+      this.destinationPath("_gitignore"),
+      this.destinationPath(".gitignore")
+    );
+    this.fs.move(
+      this.destinationPath("_npmignore"),
+      this.destinationPath(".npmignore")
+    );
   },
 });

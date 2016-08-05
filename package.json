@@ -1,6 +1,6 @@
 {
   "name": "generator-typescript-npm",
-  "version": "1.5.0",
+  "version": "1.5.4",
   "description": "Yeoman generator for TypeScript modules, using only npm scripts instead of Grunt/Gulp",
   "keywords": [
     "yeoman-generator",
@@ -21,7 +21,9 @@
     "prepublish": "npm run build",
     "test": "mocha --require ts-node/register src/test/**/*.ts",
     "test:watch": "nodemon -e ts,json node_modules/mocha/bin/mocha --require ts-node/register src/test/**/*.ts",    
-    "updatetemplate": "shx rm -rf src/templates && mkdir src/templates && git clone https://github.com/mathiasringhof/typescript-node-seed src/templates && shx rm -rf src/templates/.git && shx rm src/templates/README.md"
+    "fetchlatestseed": "shx rm -rf src/templates && mkdir src/templates && git clone https://github.com/mathiasringhof/typescript-node-seed src/templates",
+    "renamedotfiles": "shx mv src/templates/.gitignore src/templates/_gitignore && shx mv src/templates/.npmignore src/templates/_npmignore",
+    "updatetemplate": "npm run fetchlatestseed && shx rm -rf src/templates/.git && shx rm src/templates/README.md && npm run renamedotfiles"
   },
   "author": "Mathias Ringhof",
   "license": "ISC",
